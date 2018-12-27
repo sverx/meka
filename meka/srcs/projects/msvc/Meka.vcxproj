@@ -234,6 +234,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\libs\str\Str.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\allegro4to5.cpp" />
     <ClCompile Include="..\..\app_about.cpp" />
     <ClCompile Include="..\..\app_cheatfinder.cpp" />
@@ -366,6 +370,7 @@
     <ClInclude Include="..\..\..\libs\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\..\..\libs\imgui\imstb_textedit.h" />
     <ClInclude Include="..\..\..\libs\imgui\imstb_truetype.h" />
+    <ClInclude Include="..\..\..\libs\str\Str.h" />
     <ClInclude Include="..\..\allegro4to5.h" />
     <ClInclude Include="..\..\app_about.h" />
     <ClInclude Include="..\..\app_cheatfinder.h" />

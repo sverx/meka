@@ -45,8 +45,8 @@
 #endif
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_ttf.h>
-#include "imgui.h"
-#include "imgui_impl_allegro5.h"
+
+#include "newgui.h"
 
 //-----------------------------------------------------------------------------
 // Globals
@@ -369,15 +369,10 @@ int main(int argc, char **argv)
 
     // FIXME: add 'init system' here
 
-    // Setup ImGui binding
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-    ImGui_ImplAllegro5_Init(NULL);
-
     // Initializations
     g_env.state = MEKA_STATE_INIT;
     Filenames_Init         (); // Set Filenames Values
+    NewGui_Init            (); // Initialize dear imgui
     Messages_Init          (); // Load MEKA.MSG and init messaging system
     Init_Default_Values    (); // Set Defaults Variables
     Command_Line_Parse     (); // Parse Command Line (1)
@@ -453,8 +448,7 @@ int main(int argc, char **argv)
     Show_End_Message       (); // Show End Message
     Messages_Close();
 
-    ImGui_ImplAllegro5_Shutdown();
-    ImGui::DestroyContext();
+    NewGui_Close();
 
     Close_Allegro();
 

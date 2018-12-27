@@ -84,6 +84,7 @@ struct MemoryEditor
     // Settings
     bool            Open;                                   // = true   // set to false when DrawWindow() was closed. ignore if not using DrawWindow().
     bool            ReadOnly;                               // = false  // disable any editing.
+    int             Lines;                                  // = -1     // number of lines to display (-1 = use available height)
     int             Cols;                                   // = 16     // number of columns to display.
     bool            OptShowOptions;                         // = true   // display options button/context menu. when disabled, options will be locked unless you provide your own UI for them.
     bool            OptShowDataPreview;                     // = false  // display a footer previewing the decimal/binary/hex/float representation of the currently selected bytes.
@@ -115,6 +116,7 @@ struct MemoryEditor
         // Settings
         Open = true;
         ReadOnly = false;
+        Lines = -1;
         Cols = 16;
         OptShowOptions = true;
         OptShowDataPreview = false;
@@ -183,7 +185,7 @@ struct MemoryEditor
                 s.PosAsciiStart += ((Cols + OptMidColsCount - 1) / OptMidColsCount) * s.SpacingBetweenMidCols;
             s.PosAsciiEnd = s.PosAsciiStart + Cols * s.GlyphWidth;
         }
-        s.WindowWidth = s.PosAsciiEnd + style.ScrollbarSize + style.WindowPadding.x * 2 + s.GlyphWidth;
+        s.WindowWidth = s.PosAsciiEnd + style.ScrollbarSize*0 + style.WindowPadding.x * 2 + s.GlyphWidth*0;
     }
 
     // Standalone Memory Editor window
@@ -224,7 +226,8 @@ struct MemoryEditor
             footer_height += height_separator + ImGui::GetFrameHeightWithSpacing() * 1;
         if (OptShowDataPreview)
             footer_height += height_separator + ImGui::GetFrameHeightWithSpacing() * 1 + ImGui::GetTextLineHeightWithSpacing() * 3;
-        ImGui::BeginChild("##scrolling", ImVec2(0, -footer_height), false, ImGuiWindowFlags_NoMove);
+
+        ImGui::BeginChild("##scrolling", ImVec2(0, (Lines >= 0) ? (Lines * ImGui::GetTextLineHeight()) : -footer_height), false, ImGuiWindowFlags_NoMove);
         ImDrawList* draw_list = ImGui::GetWindowDrawList();
 
         ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));

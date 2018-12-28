@@ -34,7 +34,6 @@
 #include "palette.h"
 #include "patch.h"
 #include "setup.h"
-#include "textbox.h"
 #include "tvtype.h"
 #include "video.h"
 #include "video_m5.h"
@@ -186,6 +185,9 @@ static void Init_Default_Values()
     g_config.memory_editor_lines             = 16;
     g_config.memory_editor_columns           = 16;
 
+    // Applet: Misc / Visibility
+    g_config.log_active = true;
+
     // Video
     g_config.video_driver                    = g_video_driver_default;
     g_config.video_fullscreen                = false;
@@ -206,7 +208,6 @@ static void Init_Default_Values()
 
     // Fonts
     g_config.font_menus                      = FONTID_LARGE; // FONTID_CRISP;
-    g_config.font_messages                   = FONTID_PROGGY_CLEAN; //FONTID_PROGGYCLEAN;
     g_config.font_options                    = FONTID_PROGGY_CLEAN; //FONTID_PROGGYCLEAN;
     g_config.font_debugger                   = FONTID_PROGGY_SQUARE; //FONTID_PROGGYCLEAN;
     g_config.font_documentation              = FONTID_PROGGY_CLEAN; //FONTID_PROGGYCLEAN;
@@ -230,7 +231,6 @@ static void Init_Default_Values()
 
     strcpy(FB.current_directory, ".");
 
-    TB_Message_Init_Values();
     Sound_Init_Config();
     TVType_Init_Values();
     Glasses_Init_Values();

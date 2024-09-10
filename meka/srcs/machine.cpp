@@ -241,7 +241,7 @@ void        Machine_Set_Mapper(void)
     case DRV_GG:
         if (tsms.Size_ROM <= 48*1024)
             g_machine.mapper = MAPPER_SMS_NoMapper;
-        else 
+        else
             g_machine.mapper = MAPPER_Standard;
         if (DB.current_entry == NULL)    // Detect mapper for unknown ROM
         {
@@ -664,7 +664,7 @@ void        Machine_Reset(void)
         if (g_driver->id == DRV_GG)
             g_machine.VDP.model = VDP_MODEL_315_5378;
         else
-            g_machine.VDP.model = VDP_MODEL_315_5226;
+            g_machine.VDP.model = VDP_MODEL_315_5246;
     }
 
     // 3-D GLASSES ------------------------------------------------------------

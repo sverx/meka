@@ -129,7 +129,7 @@ void        TechInfo_Update(void)
         switch (g_machine.VDP.model)
         {
         case VDP_MODEL_315_5124: sprintf(model_str, "315-5124"); break;
-        case VDP_MODEL_315_5226: sprintf(model_str, "315-5246"); break;
+        case VDP_MODEL_315_5246: sprintf(model_str, "315-5246"); break;
         case VDP_MODEL_315_5378: sprintf(model_str, "315-5378"); break;
         case VDP_MODEL_315_5313: sprintf(model_str, "315-5313"); break;
         default: assert(0); break;
@@ -215,7 +215,7 @@ void        TechInfo_Update(void)
                     FM_Regs[i + 0x30] & 0x0f, // Volume
                     FM_Regs[i + 0x30] >> 4 // Instrument
                     );
-                if (i % 3 == 2) 
+                if (i % 3 == 2)
                 {
                     TechInfo_SetLine(app, line, line_idx++);
                     p = line;
